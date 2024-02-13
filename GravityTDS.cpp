@@ -119,7 +119,7 @@ boolean GravityTDS::cmdSerialDataAvailable()
     cmdReceivedChar = Serial.read();
     if (cmdReceivedChar == '\n' || cmdReceivedBufferIndex==ReceivedBufferLength){
 		cmdReceivedBufferIndex = 0;
-		strupr(cmdReceivedBuffer);
+		for(char &c : cmdReceivedBuffer) c = toupper(c);
 		return true;
     }else{
       cmdReceivedBuffer[cmdReceivedBufferIndex] = cmdReceivedChar;
